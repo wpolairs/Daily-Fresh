@@ -18,7 +18,3 @@ export default {
   },
 };
 </script>
-
-<style lang="less">
-@import url("~@/assets/css/home.less");
-</style>
