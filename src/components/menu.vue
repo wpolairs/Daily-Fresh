@@ -1,27 +1,24 @@
 <template>
   <div class="menu-list">
     <a-menu
-      :default-selected-keys="['1']"
-      :default-open-keys="['sub1']"
+      :default-selected-keys="['index']"
+      :default-open-keys="[$router.currentRoute.matched[0].name]"
       mode="inline"
       theme="dark"
       :inline-collapsed="$store.state.collapsed"
     >
-      <a-sub-menu key="sub1">
-        <span slot="title"
-          ><a-icon type="mail" /><span>首页</span></span
-        >
-        <a-menu-item key="5"> 统计 </a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="sub2">
-        <span slot="title"
-          ><a-icon type="appstore" /><span>商品</span></span
-        >
-        <a-menu-item key="9"> 商品列表 </a-menu-item>
-        <a-sub-menu key="sub3" title="添加商品">
-          <a-menu-item key="11"> 商品类目管理 </a-menu-item>
+      <template v-for="router in $store.state.menuRouters">
+        <a-sub-menu :key="router.name" v-if="!router.meta.hidden">
+          <span slot="title"
+            ><a-icon :type="router.meta.icon" /><span>{{ router.meta.title }}</span></span
+          >
+          <a-menu-item :key="child.name" v-for="child in router.children">
+            <router-link :to="{name: child.name}">
+              <a-icon :type="child.meta.icon" />
+              {{ child.meta.title }}</router-link>
+          </a-menu-item>
         </a-sub-menu>
-      </a-sub-menu>
+      </template>
     </a-menu>
   </div>
 </template>

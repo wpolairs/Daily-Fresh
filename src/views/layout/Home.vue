@@ -3,7 +3,7 @@
     <!-- 左边菜单列表 -->
     <menu-list />
     <!-- 右边内容 -->
-    <main-header />
+    <main-header></main-header>
   </div>
 </template>
 

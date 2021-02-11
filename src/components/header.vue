@@ -12,9 +12,11 @@
       <!-- 面包屑导航 -->
       <div class="breadcrumb">
         <a-breadcrumb>
-          <a-breadcrumb-item>Home</a-breadcrumb-item>
+          <a-breadcrumb-item>{{ $router.currentRoute.matched[0].meta.title }}</a-breadcrumb-item>
           <a-breadcrumb-item
-            ><a href="">Application Center</a></a-breadcrumb-item
+            ><router-link :to="{name: $router.currentRoute.matched[1].name}">
+              {{ $router.currentRoute.matched[1].meta.title }}
+              </router-link></a-breadcrumb-item
           >
         </a-breadcrumb>
       </div>
@@ -29,11 +31,15 @@
         </ul>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
+  created() {
+    console.log(this.$router);
+  },
   methods: {
     toggleCollapsed() {
       this.$store.dispatch('changeCollapsed');
