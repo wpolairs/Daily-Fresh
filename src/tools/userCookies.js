@@ -1,5 +1,8 @@
 import cookie from 'js-cookie';
-
+/**
+ * 存储用户信息
+ * @param {Object} userInfo
+ */
 export function setUserCookie(userInfo) {
   const arr = Object.entries(userInfo);
   arr.forEach((item) => {

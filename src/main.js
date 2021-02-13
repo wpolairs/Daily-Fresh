@@ -1,10 +1,12 @@
 import Vue from 'vue';
+import VChars from 'v-charts';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import './plugins/ant-design-vue';
+import '@/plugins/ant-design-vue';
 import '@/assets/css/reset.css';
 
+Vue.use(VChars);
 Vue.config.productionTip = false;
 
 new Vue({

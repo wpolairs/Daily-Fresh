@@ -74,7 +74,7 @@ const routes = [
         title: '统计',
         icon: 'number',
       },
-      component: () => import('../views/page/index.vue'),
+      component: () => import('@/views/page/index.vue'),
     }],
   },
   {

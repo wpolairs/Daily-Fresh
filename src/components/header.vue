@@ -65,13 +65,18 @@ export default {
     margin-left: 10px;
   }
   .user-info {
+    position: relative;
     float: right;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s;
     li:not(:first-child) {
+      position: absolute;
+      z-index: 100;
       display: none;
       font-weight: bold;
+      width: 132px;
+      height: 50px;
       &:hover {
         background-color: rgb(14, 199, 91);
         color: #fff;
@@ -82,6 +87,7 @@ export default {
       transition: all 0.3s;
     }
     &:hover {
+      background:#001529bb;
       li {
         display: block;
       }
