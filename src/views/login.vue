@@ -4,7 +4,7 @@
       id="components-form-demo-normal-login"
       :form="form"
       class="login-form"
-      @submit="handleSubmit"
+      @submit.prevent="handleSubmit"
     >
       <a-form-item>
         <a-input
@@ -68,17 +68,16 @@ import api from '@/api/user';
 
 export default {
   methods: {
-    handleSubmit(e) {
-      e.preventDefault();
+    handleSubmit() {
       this.form.validateFields((err, values) => {
         if (!err) {
           api
             .login(values)
             .then((res) => {
-              console.log(res, 'res');
-              this.$store.dispatch('setUserInfo', res);
-              this.$router.push({
-                name: 'Home',
+              this.$store.dispatch('setUserInfo', res).then(() => {
+                this.$router.push({
+                  name: 'home',
+                });
               });
             })
             .catch((error) => {

@@ -99,8 +99,8 @@ router.beforeEach((to, from, next) => {
       if (!isAuthority) {
         const newMenuRouters = getAuthorityRouter(store.state.user.role, menuRouters);
         store.dispatch('setMenuRouters', routes.concat(newMenuRouters)).then(() => {
-          next();
           router.addRoutes(newMenuRouters);
+          next();
         });
         isAuthority = true;
       }
