@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import login from '@/views/login.vue';
 import Home from '@/views/layout/Home.vue';
+import Index from '@/views/page/index.vue';
 import store from '@/store/index';
 import getAuthorityRouter from '../tools/authority';
 
@@ -74,7 +75,7 @@ const routes = [
         title: '统计',
         icon: 'number',
       },
-      component: () => import('@/views/page/index.vue'),
+      component: Index,
     }],
   },
   {

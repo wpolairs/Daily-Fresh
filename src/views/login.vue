@@ -76,7 +76,7 @@ export default {
             .then((res) => {
               this.$store.dispatch('setUserInfo', res).then(() => {
                 this.$router.push({
-                  name: 'home',
+                  name: 'Home',
                 });
               });
             })
