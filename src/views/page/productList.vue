@@ -1,7 +1,14 @@
 <template>
   <div class="productlist">
     <search @searchForm="searchForm" :categoryData='categoryList'/>
-    <table-list :data="tableData" :page='page' @changePage='changePage' />
+    <table-list
+    :data="tableData"
+    :page='page'
+    :loading='loading'
+    @changePage='changePage'
+    @deleteProduct='deleteProduct'
+    @editProduct='editProduct'
+    />
   </div>
 </template>
 
@@ -20,10 +27,11 @@ export default {
       catagoryObj: {},
       page: {
         current: 1,
-        pageSize: 5,
+        pageSize: 8,
         showSizeChanger: true,
         total: 0,
       },
+      loading: true,
     };
   },
   components: {
@@ -53,12 +61,40 @@ export default {
         size: this.page.pageSize,
         ...this.searchFrom,
       }).then((res) => {
-        console.log(res);
+        console.log(res, this.catagoryObj);
         this.page.total = res.total;
         this.tableData = res.data.map((item) => ({
           ...item,
-          categoryName: this.catagoryObj[item.category].name,
+          categoryName: this.catagoryObj[item.category].name ? this.catagoryObj[item.category].name : '',
         }));
+        this.loading = false;
+      });
+    },
+    // 编辑商品信息
+    editProduct(record) {
+      console.log(record);
+      this.$router.push({
+        name: 'edit',
+        params: {
+          id: record.id,
+        },
+      });
+    },
+    // 删除商品
+    deleteProduct(record) {
+      console.log(record, '-----res-------');
+      this.$confirm({
+        title: `Do you Want to delete ${record.c_item}?`,
+        content: () => <div style="color:red;">删除后商品将不再展示</div>,
+        onOk() {
+          api.deleteProducts({ id: record.id }).then(() => {
+            this.getTableData();
+          });
+        },
+        onCancel() {
+          console.log('Cancel');
+        },
+        class: 'test',
       });
     },
     // 切换页码

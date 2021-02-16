@@ -5,10 +5,11 @@
     :data-source="tableData"
     @change="changePage"
     :pagination="page"
+    :loading="loading"
     >
-    <div slot="operation">
-        <a-button>编辑</a-button>
-        <a-button>删除</a-button>
+    <div slot="operation" slot-scope="text, record">
+        <a-button class="editProduct" @click="editProduct(record)">编辑</a-button>
+        <a-button type="danger" class="deleteProduct" @click="deleteProduct(record)">删除</a-button>
     </div>
   </a-table>
 </div>
@@ -77,11 +78,12 @@ const columns = [
     dataIndex: 'operation',
     key: 'operation',
     scopedSlots: { customRender: 'operation' },
+    width: 200,
   },
 ];
 
 export default {
-  props: ['data', 'page'],
+  props: ['data', 'page', 'loading'],
   data() {
     return {
       columns,
@@ -99,12 +101,18 @@ export default {
     changePage(pagination) {
       this.$emit('changePage', pagination);
     },
+    deleteProduct(record) {
+      this.$emit('deleteProduct', record);
+    },
+    editProduct(record) {
+      this.$emit('editProduct', record);
+    },
   },
 };
 </script>
 
-<style scoped>
+<style scoped lang='less'>
 .tableData{
-    margin-top: 20px;
+  margin-top: 20px;
 }
 </style>

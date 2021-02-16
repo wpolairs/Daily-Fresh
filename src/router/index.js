@@ -45,6 +45,16 @@ const menuRouters = [
         component: () => import('../views/page/productAdd.vue'),
       },
       {
+        path: 'edit/:id',
+        name: 'edit',
+        meta: {
+          title: '编辑商品',
+          icon: 'edit',
+          hidden: true,
+        },
+        component: () => import('../views/page/productAdd.vue'),
+      },
+      {
         path: 'category',
         name: 'category',
         meta: {

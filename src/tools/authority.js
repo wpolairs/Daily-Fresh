@@ -9,6 +9,9 @@ const menuRouters = {
     {
       name: 'add',
     },
+    {
+      name: 'edit',
+    },
   ],
   admin: [
     {
@@ -22,6 +25,9 @@ const menuRouters = {
     },
     {
       name: 'category',
+    },
+    {
+      name: 'edit',
     },
   ],
 };
