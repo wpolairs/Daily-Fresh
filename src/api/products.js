@@ -8,7 +8,7 @@ export default {
   },
   // 添加商品
   addProduct(params) {
-    return axios.post(' /products/add', { params });
+    return axios.post('/products/add', params);
   },
   // 删除商品
   deleteProducts(params) {

@@ -61,11 +61,10 @@ export default {
         size: this.page.pageSize,
         ...this.searchFrom,
       }).then((res) => {
-        console.log(res, this.catagoryObj);
         this.page.total = res.total;
         this.tableData = res.data.map((item) => ({
           ...item,
-          categoryName: this.catagoryObj[item.category].name ? this.catagoryObj[item.category].name : '',
+          categoryName: this.catagoryObj[item.category] ? this.catagoryObj[item.category].name : '',
         }));
         this.loading = false;
       });
