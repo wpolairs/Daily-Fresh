@@ -43,6 +43,7 @@ export default {
     toggleCollapsed() {
       this.$store.dispatch('changeCollapsed');
     },
+    // 退出系统
     logout() {
       this.$store.dispatch('logout');
       this.$router.push({

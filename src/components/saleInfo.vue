@@ -129,17 +129,21 @@ export default {
       }
       this.fileList = fileList;
     },
+    // 图片回显
+    pictureEcho() {
+      if (this.form.images.length > 0) {
+        const { images } = this.form;
+        this.fileList = images.map((item, index) => ({
+          uid: index,
+          name: 'image.png',
+          status: 'done',
+          url: item,
+        }));
+      }
+    },
   },
   created() {
-    if (this.form.images.length > 0) {
-      const { images } = this.form;
-      this.fileList = images.map((item, index) => ({
-        uid: index,
-        name: 'image.png',
-        status: 'done',
-        url: item,
-      }));
-    }
+    this.pictureEcho();
   },
 };
 </script>

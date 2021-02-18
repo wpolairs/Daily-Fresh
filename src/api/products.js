@@ -18,6 +18,7 @@ export default {
   editProducts(params) {
     return axios.put('/products/edit', { params });
   },
+  // 商品信息
   productInfo(params) {
     return axios.get(`/products/${params}`);
   },
