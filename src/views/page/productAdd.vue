@@ -46,11 +46,38 @@ export default {
     };
   },
   methods: {
+    // 判断是否从编辑跳转过来
+    editProduct() {
+      console.log(this.$route.params);
+      const { id } = this.$route.params;
+      if (id) {
+        this.getProductInfo(id);
+      }
+    },
+    // 获取商品信息
+    getProductInfo(params) {
+      console.log(params);
+      productAPI.productInfo(params).then((res) => {
+        this.form = res;
+      });
+    },
     next(form) {
       this.form = form;
       if (this.current >= this.steps.length - 1) {
-        // 进行表单提交
-        // console.log(this.form);
+        if (this.$route.params.id) {
+          // 当前是编辑商品
+          console.log(this.form);
+          productAPI.editProducts(this.form).then((res) => {
+            console.log(res);
+            this.$message.success('修改成功');
+            this.$router.push({
+              name: 'list',
+            });
+          });
+          return;
+        }
+        // 当前是新增商品
+        console.log('新增');
         this.addProducts();
         return;
       }
@@ -64,6 +91,7 @@ export default {
       };
       this.current -= 1;
     },
+    // 获取商品类目
     getCategory() {
       api.getCategoryList().then((res) => {
         this.categoryList = res.data;
@@ -81,6 +109,7 @@ export default {
     },
   },
   created() {
+    this.editProduct();
     this.getCategory();
   },
 };

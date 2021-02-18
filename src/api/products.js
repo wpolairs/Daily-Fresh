@@ -18,4 +18,7 @@ export default {
   editProducts(params) {
     return axios.put('/products/edit', { params });
   },
+  productInfo(params) {
+    return axios.get(`/products/${params}`);
+  },
 };

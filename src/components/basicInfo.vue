@@ -19,7 +19,7 @@
         :key="category.id"
         :value="category.id"> {{ category.name }} </a-select-option>
       </a-select>
-      <a-select v-model="form.c_items" placeholder="请填写商品子类目">
+      <a-select v-model="form.c_item" placeholder="请填写商品子类目">
         <a-select-option
         v-for="c_item in c_itemsList"
         :key="c_item"

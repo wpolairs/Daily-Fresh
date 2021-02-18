@@ -101,7 +101,6 @@ export default {
       this.page.current = page.current;
       this.page.pageSize = page.pageSize;
       this.getTableData();
-      console.log(page);
     },
     searchForm(searchFrom) {
       this.searchFrom = searchFrom;

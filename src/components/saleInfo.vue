@@ -36,10 +36,13 @@
         </div>
       </div>
     </a-upload>
+    <a-modal :visible="previewVisible" :footer="null" @cancel="handleCancel">
+      <img alt="example" style="width: 100%" :src="previewImage" />
+    </a-modal>
     </a-form-model-item>
 
     <a-form-model-item :wrapper-col="{ span: 14, offset: 5 }">
-      <a-button type="primary" @click="previous"> 上一步 </a-button>
+      <a-button type="primary" @click="previous" class="previous"> 上一步 </a-button>
       <a-button type="primary" @click="next" class="submitBtn"> 提交 </a-button>
       <!-- <a-button style="margin-left: 10px" @click="resetForm"> Reset </a-button> -->
     </a-form-model-item>
@@ -95,7 +98,6 @@ export default {
     next() {
       this.$refs.saleForm.validate((valid) => {
         if (valid) {
-          console.log(this.form);
           this.$emit('next', this.form);
           return true;
         }
@@ -110,6 +112,7 @@ export default {
       this.previewVisible = false;
     },
     async handlePreview(file) {
+      console.log(file);
       const imagesFile = file;
       if (!file.url && !file.preview) {
         imagesFile.preview = await getBase64(file.originFileObj);
@@ -118,7 +121,6 @@ export default {
       this.previewVisible = true;
     },
     handleChange({ file, fileList }) {
-      console.log(file);
       if (file.status === 'done') {
         this.form.images.push(file.response.data.url);
       } else if (file.status === 'removed') {
@@ -128,10 +130,24 @@ export default {
       this.fileList = fileList;
     },
   },
+  created() {
+    if (this.form.images.length > 0) {
+      const { images } = this.form;
+      this.fileList = images.map((item, index) => ({
+        uid: index,
+        name: 'image.png',
+        status: 'done',
+        url: item,
+      }));
+    }
+  },
 };
 </script>
 <style scoped lang='less'>
 .saleInfo{
+  .previous{
+    margin-right: 20px;
+  }
   .ant-upload-select-picture-card i {
     font-size: 32px;
     color: #999;
