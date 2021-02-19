@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import login from '@/views/login.vue';
+import register from '@/views/register.vue';
 import Home from '@/views/layout/Home.vue';
 import Index from '@/views/page/index.vue';
 import store from '@/store/index';
@@ -97,6 +98,15 @@ const routes = [
     },
     component: login,
   },
+  {
+    path: '/register',
+    name: 'register',
+    meta: {
+      hidden: true,
+      title: '注册',
+    },
+    component: register,
+  },
 ];
 
 const router = new VueRouter({
@@ -115,6 +125,9 @@ router.beforeEach((to, from, next) => {
         });
         isAuthority = true;
       }
+      return next();
+    }
+    if (to.path === '/register') {
       return next();
     }
     return next('/login');

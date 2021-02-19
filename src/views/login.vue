@@ -57,7 +57,7 @@
         <a-button type="primary" html-type="submit" class="login-form-button">
           登录
         </a-button>
-        <a href=""> 现在注册 </a>
+        <router-link to="/register"> 现在注册 </router-link>
       </a-form-item>
     </a-form>
   </div>
