@@ -54,7 +54,7 @@ export default {
   data() {
     const validatePass = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('Please input the password'));
+        callback(new Error('请输入密码'));
       } else {
         if (this.ruleForm.checkPass !== '') {
           this.$refs.ruleForm.validateField('checkPass');
@@ -64,9 +64,9 @@ export default {
     };
     const validatePass2 = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('Please input the password again'));
+        callback(new Error('请再次确认密码'));
       } else if (value !== this.ruleForm.password) {
-        callback(new Error("Two inputs don't match!"));
+        callback(new Error('两次密码不一致！'));
       } else {
         callback();
       }
@@ -80,8 +80,8 @@ export default {
         checkPass: '',
       },
       rules: {
-        password: [{ validator: validatePass, trigger: 'change' }],
-        checkPass: [{ validator: validatePass2, trigger: 'change' }],
+        password: [{ validator: validatePass, trigger: 'blur' }],
+        checkPass: [{ validator: validatePass2, trigger: 'blur' }],
       },
       layout: {
         labelCol: { span: 4 },

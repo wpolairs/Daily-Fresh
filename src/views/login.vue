@@ -83,7 +83,6 @@ export default {
             .catch((error) => {
               this.$message.error(error);
             });
-          console.log('Received values of form: ', values);
         }
       });
     },
