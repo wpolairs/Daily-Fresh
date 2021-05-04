@@ -8,7 +8,6 @@ import '@/assets/css/reset.css';
 
 Vue.use(VChars);
 Vue.config.productionTip = false;
-
 new Vue({
   router,
   store,

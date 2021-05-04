@@ -3,17 +3,17 @@
     <a-row :gutter="16">
       <a-col :span="8">
         <a-card title="商品总览" :bordered="false">
-          <p>商品总览</p>
+          <p>998</p>
         </a-card>
       </a-col>
       <a-col :span="8">
         <a-card title="用户总览" :bordered="false">
-          <p>用户总览</p>
+          <p>1305</p>
         </a-card>
       </a-col>
       <a-col :span="8">
         <a-card title="销量总览" :bordered="false">
-          <p>销量总览</p>
+          <p>520</p>
         </a-card>
       </a-col>
     </a-row>

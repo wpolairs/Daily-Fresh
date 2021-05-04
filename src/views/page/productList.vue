@@ -71,7 +71,6 @@ export default {
     },
     // 编辑商品信息
     editProduct(record) {
-      console.log(record);
       this.$router.push({
         name: 'edit',
         params: {
@@ -81,7 +80,6 @@ export default {
     },
     // 删除商品
     deleteProduct(record) {
-      console.log(record, '-----res-------');
       this.$confirm({
         title: `Do you Want to delete ${record.c_item}?`,
         content: () => <div style="color:red;">删除后商品将不再展示</div>,
