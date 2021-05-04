@@ -125,10 +125,17 @@ export default {
 
 <style scoped lang='less'>
 .register{
-    width: 40%;
+  background: url('../assets/bg.jpg') no-repeat;
+  height: 100vh;
+  form{
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.671);
+    width: 500px;
     position: absolute;
+    padding: 60px 0px 20px 40px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
 }
 </style>

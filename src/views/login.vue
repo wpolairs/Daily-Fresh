@@ -92,8 +92,22 @@ export default {
   },
 };
 </script>
-<style>
-@import url("~@/assets/css/login.less");
+<style scoped lang='less'>
+.login{
+  height: 100vh;
+  background: url('../assets/bg.jpg') no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form{
+    padding: 60px 50px 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.671);
+  }
+}
 #components-form-demo-normal-login .login-form {
   max-width: 300px;
 }
